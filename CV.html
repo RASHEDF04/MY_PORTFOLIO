@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachid Ferhaoui | Network Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#4f46e5',
+                        accent: '#10b981',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        josefin: ['Josefin Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #6366f1, #10b981);
+            border-radius: 2px;
+        }
+        
+        .skill-bar {
+            transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            border-radius: 4px;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #6366f1;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 26px;
+            width: 2px;
+            height: calc(100% + 1.5rem);
+            background: #e2e8f0;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #6366f1, #10b981);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 10px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-josefin">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-md z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">Rachid Ferhaoui</a>
+            <div class="hidden md:flex space-x-10 text-lg">
+                <a href="#home" class="nav-link font-medium">Home</a>
+                <a href="#about" class="nav-link font-medium">About</a>
+                <a href="#skills" class="nav-link font-medium">Skills</a>
+                <a href="#experience" class="nav-link font-medium">Experience</a>
+                <a href="#education" class="nav-link font-medium">Education</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-primary focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pt-2 pb-4 shadow-lg">
+            <a href="#home" class="block py-3 border-b border-gray-100">Home</a>
+            <a href="#about" class="block py-3 border-b border-gray-100">About</a>
+            <a href="#skills" class="block py-3 border-b border-gray-100">Skills</a>
+            <a href="#experience" class="block py-3 border-b border-gray-100">Experience</a>
+            <a href="#education" class="block py-3 border-b border-gray-100">Education</a>
+            <a href="#contact" class="block py-3">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-20 md:pt-36 md:pb-28 hero-gradient text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Rachid Ferhaoui</h1>
+                <h2 class="text-2xl md:text-3xl mb-6 opacity-90">Network & Systems Specialist</h2>
+                <p class="text-lg mb-8 max-w-lg">Specialized in network infrastructure management with expertise in system administration, virtualization, and cybersecurity.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg">Contact Me</a>
+                    <a href="#projects" class="border border-white text-white hover:bg-white/10 px-6 py-3 rounded-lg font-medium transition duration-300">View Projects</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-white/10 rounded-full flex items-center justify-center floating">
+                        <div class="w-56 h-56 md:w-72 md:h-72 bg-white/10 rounded-full flex items-center justify-center">
+                            <div class="w-48 h-48 md:w-60 md:h-60 bg-white/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-network-wired text-6xl md:text-7xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-2 -right-4 w-24 h-24 bg-accent/30 rounded-full"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary/40 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold section-title">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="hexagon bg-gray-100 w-80 h-80 mx-auto flex items-center justify-center">
+                        <div class="hexagon hero-gradient w-72 h-72 flex items-center justify-center">
+                            <i class="fas fa-user-shield text-5xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mb-6 text-lg leading-relaxed">Technicien Spécialisé En Systèmes Et Réseaux, récemment diplômé et passionné par l'informatique et la gestion d'infrastructures réseau.</p>
+                    <p class="mb-6 leading-relaxed">Rigoureux, autonome et doté d'un bon sens de l'analyse, j'ai acquis des compétences solides en administration système, virtualisation, sécurité réseau et supervision.</p>
+                    <p class="mb-8 leading-relaxed">Je suis prêt à m'investir pleinement dans un environnement professionnel pour contribuer activement à des projets techniques, assurer la disponibilité des systèmes, et participer à l'évolution des infrastructures IT.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-3">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Location</p>
+                                <p class="font-medium">Méknes, Morocco</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-3">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Phone</p>
+                                <p class="font-medium">+212611915325</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Email</p>
+                                <p class="font-medium">ferashed04@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-3">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Languages</p>
+                                <p class="font-medium">Arabe, Français, Anglais</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold section-title">Technical Skills</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Networking & Systems</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Network Management</span>
+                                <span class="text-primary font-bold">90%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Equipment Configuration</span>
+                                <span class="text-primary font-bold">85%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Network Monitoring</span>
+                                <span class="text-primary font-bold">88%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">IP Address Management</span>
+                                <span class="text-primary font-bold">92%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Security & Virtualization</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">VPN Configuration</span>
+                                <span class="text-primary font-bold">80%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Server Administration</span>
+                                <span class="text-primary font-bold">85%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Virtualization</span>
+                                <span class="text-primary font-bold">87%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Firewall Management</span>
+                                <span class="text-primary font-bold">83%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 83%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-xl font-semibold mb-6 text-primary">Software & Tools</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fab fa-linux text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">Linux</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fab fa-windows text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">Windows Server</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-server text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">VMware</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-desktop text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">VirtualBox</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-shield-alt text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">Metasploit</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-search text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">Nmap</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-chart-line text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">Zabbix</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-tools text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">GLPI</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-database text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">TrueNAS</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
+                        <i class="fas fa-eye text-4xl text-primary mb-2"></i>
+                        <span class="font-medium">Snort</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold section-title">Work Experience</h2>
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+                <div class="card-hover bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-md border border-gray-100">
+                    <div class="flex items-start mb-4">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
+                            <i class="fas fa-laptop-code text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-primary">IT Department Intern</h3>
+                            <p class="text-secondary font-medium">ISTAG Bab Tizimi • 2023 - 2025</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mt-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Managed and supervised network infrastructure and systems for 2 years</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Implemented open source solutions to reduce IT management costs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Optimized network service availability with centralized monitoring (Zabbix)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Established effective IP addressing policy to prevent address conflicts</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-hover bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-md border border-gray-100">
+                    <div class="flex items-start mb-4">
+                        <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
+                            <i class="fas fa-university text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-primary">Academic Intern</h3>
+                            <p class="text-secondary font-medium">Faculty of Sciences, Meknès • 2024 - 2025</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mt-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Set up a virtualized environment with Proxmox VE</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Installed and configured GLPI for IT resource management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Deployed a backup server with TrueNAS for data security</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
+                            <span>Supervised infrastructure with Zabbix for better visibility</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold section-title">Education & Certifications</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Education</h3>
+                    <div class="space-y-8">
+                        <div class="timeline-item">
+                            <h4 class="text-lg font-semibold">Diploma in Systems and Networks</h4>
+                            <p class="text-secondary font-medium">ISTAG de Bab Tizimi, Meknès • 2023 - 2025</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-lg font-semibold">Cybersecurity Intrusion Tester Training</h4>
+                            <p class="text-secondary font-medium">2024 - 2025</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-lg font-semibold">Mathematics and Applications</h4>
+                            <p class="text-secondary font-medium">Faculty of Sciences, Meknès • 2022 - 2023</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="text-lg font-semibold">Baccalaureate in Physical and Chemical Science</h4>
+                            <p class="text-secondary font-medium">Lycée Qualifiant Ait Assm • 2021 - 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-primary">Certifications</h3>
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
+                                <i class="fas fa-certificate text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold">Introduction to Cybersecurity - Ethical Hacker</h4>
+                                <p class="text-secondary font-medium">Cisco • 2024</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Certified in cybersecurity fundamentals and ethical hacking techniques by Cisco Networking Academy.</p>
+                    </div>
+                    
+                    <div class="mt-8 bg-white p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
+                                <i class="fas fa-network-wired text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold">Network Administration</h4>
+                                <p class="text-secondary font-medium">ISTAG • 2024</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">Advanced training in network administration, including routing, switching, and security protocols.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold section-title">Get In Touch</h2>
+            <div class="grid md:grid-cols-2 gap-12 mt-8">
+                <div>
+                    <p class="mb-6 text-lg">I'm interested in opportunities where I can contribute my skills in network administration and systems management. Feel free to reach out if you'd like to discuss potential collaborations.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Location</p>
+                                <p class="text-gray-600">Méknes, Riad Zitoune, Morocco</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Phone</p>
+                                <p class="text-gray-600">+212611915325</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Email</p>
+                                <p class="text-gray-600">ferashed04@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <form class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2 font-medium">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Rachid Ferhaoui</h3>
+                <p class="mb-8 opacity-80">Network & Systems Specialist</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <p class="opacity-70">© 2023 Rachid Ferhaoui. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Animate skill bars when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.style.width;
+                        entry.target.style.width = '0';
+                        setTimeout(() => {
+                            entry.target.style.width = width;
+                        }, 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
