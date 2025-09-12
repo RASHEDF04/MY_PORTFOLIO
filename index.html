@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rachid Ferhaoui | Network Specialist</title>
+    <title>Rachid Ferhaoui | Spécialiste Réseaux</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -142,20 +142,37 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
+        .language-selector {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body class="font-josefin">
+    <!-- Language Selector -->
+    <div class="language-selector hidden md:block">
+        <button id="lang-fr" class="px-3 py-1 bg-primary text-white rounded-md">FR</button>
+        <button id="lang-en" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md ml-2">EN</button>
+    </div>
+
     <!-- Navigation -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-md z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold gradient-text">Rachid Ferhaoui</a>
             <div class="hidden md:flex space-x-10 text-lg">
-                <a href="#home" class="nav-link font-medium">Home</a>
-                <a href="#about" class="nav-link font-medium">About</a>
-                <a href="#skills" class="nav-link font-medium">Skills</a>
-                <a href="#experience" class="nav-link font-medium">Experience</a>
-                <a href="#education" class="nav-link font-medium">Education</a>
-                <a href="#contact" class="nav-link font-medium">Contact</a>
+                <a href="#home" class="nav-link font-medium" data-i18n="home">Accueil</a>
+                <a href="#about" class="nav-link font-medium" data-i18n="about">À Propos</a>
+                <a href="#skills" class="nav-link font-medium" data-i18n="skills">Compétences</a>
+                <a href="#experience" class="nav-link font-medium" data-i18n="experience">Expérience</a>
+                <a href="#education" class="nav-link font-medium" data-i18n="education">Formation</a>
+                <a href="#contact" class="nav-link font-medium" data-i18n="contact">Contact</a>
             </div>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-primary focus:outline-none">
@@ -165,12 +182,16 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pt-2 pb-4 shadow-lg">
-            <a href="#home" class="block py-3 border-b border-gray-100">Home</a>
-            <a href="#about" class="block py-3 border-b border-gray-100">About</a>
-            <a href="#skills" class="block py-3 border-b border-gray-100">Skills</a>
-            <a href="#experience" class="block py-3 border-b border-gray-100">Experience</a>
-            <a href="#education" class="block py-3 border-b border-gray-100">Education</a>
-            <a href="#contact" class="block py-3">Contact</a>
+            <a href="#home" class="block py-3 border-b border-gray-100" data-i18n="home">Accueil</a>
+            <a href="#about" class="block py-3 border-b border-gray-100" data-i18n="about">À Propos</a>
+            <a href="#skills" class="block py-3 border-b border-gray-100" data-i18n="skills">Compétences</a>
+            <a href="#experience" class="block py-3 border-b border-gray-100" data-i18n="experience">Expérience</a>
+            <a href="#education" class="block py-3 border-b border-gray-100" data-i18n="education">Formation</a>
+            <a href="#contact" class="block py-3" data-i18n="contact">Contact</a>
+            <div class="flex mt-4 pt-3 border-t border-gray-100">
+                <button id="lang-fr-mobile" class="px-3 py-1 bg-primary text-white rounded-md text-sm">FR</button>
+                <button id="lang-en-mobile" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md text-sm ml-2">EN</button>
+            </div>
         </div>
     </nav>
 
@@ -179,11 +200,10 @@
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Rachid Ferhaoui</h1>
-                <h2 class="text-2xl md:text-3xl mb-6 opacity-90">Network & Systems Specialist</h2>
-                <p class="text-lg mb-8 max-w-lg">Specialized in network infrastructure management with expertise in system administration, virtualization, and cybersecurity.</p>
+                <h2 class="text-2xl md:text-3xl mb-6 opacity-90" data-i18n="job_title">Spécialiste Réseaux & Systèmes</h2>
+                <p class="text-lg mb-8 max-w-lg" data-i18n="hero_desc">Spécialisé dans la gestion d'infrastructures réseau avec une expertise en administration système, virtualisation et cybersécurité.</p>
                 <div class="flex space-x-4">
-                    <a href="#contact" class="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg">Contact Me</a>
-                    <a href="#projects" class="border border-white text-white hover:bg-white/10 px-6 py-3 rounded-lg font-medium transition duration-300">View Projects</a>
+                    <a href="#contact" class="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg" data-i18n="contact_me">Me Contacter</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
@@ -205,7 +225,7 @@
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold section-title">About Me</h2>
+            <h2 class="text-3xl font-bold section-title" data-i18n="about_me">À Propos de Moi</h2>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <div class="hexagon bg-gray-100 w-80 h-80 mx-auto flex items-center justify-center">
@@ -215,17 +235,17 @@
                     </div>
                 </div>
                 <div>
-                    <p class="mb-6 text-lg leading-relaxed">Technicien Spécialisé En Systèmes Et Réseaux, récemment diplômé et passionné par l'informatique et la gestion d'infrastructures réseau.</p>
-                    <p class="mb-6 leading-relaxed">Rigoureux, autonome et doté d'un bon sens de l'analyse, j'ai acquis des compétences solides en administration système, virtualisation, sécurité réseau et supervision.</p>
-                    <p class="mb-8 leading-relaxed">Je suis prêt à m'investir pleinement dans un environnement professionnel pour contribuer activement à des projets techniques, assurer la disponibilité des systèmes, et participer à l'évolution des infrastructures IT.</p>
+                    <p class="mb-6 text-lg leading-relaxed" data-i18n="about_desc1">Technicien Spécialisé En Systèmes Et Réseaux, récemment diplômé et passionné par l'informatique et la gestion d'infrastructures réseau.</p>
+                    <p class="mb-6 leading-relaxed" data-i18n="about_desc2">Rigoureux, autonome et doté d'un bon sens de l'analyse, j'ai acquis des compétences solides en administration système, virtualisation, sécurité réseau et supervision.</p>
+                    <p class="mb-8 leading-relaxed" data-i18n="about_desc3">Je suis prêt à m'investir pleinement dans un environnement professionnel pour contribuer activement à des projets techniques, assurer la disponibilité des systèmes, et participer à l'évolution des infrastructures IT.</p>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex items-center">
                             <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-3">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500">Location</p>
-                                <p class="font-medium">Méknes, Morocco</p>
+                                <p class="text-sm text-gray-500" data-i18n="location">Localisation</p>
+                                <p class="font-medium">Méknes, Maroc</p>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -233,7 +253,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500">Phone</p>
+                                <p class="text-sm text-gray-500" data-i18n="phone">Téléphone</p>
                                 <p class="font-medium">+212611915325</p>
                             </div>
                         </div>
@@ -243,7 +263,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500">Email</p>
-                                <p class="font-medium">ferashed04@gmail.com</p>
+                                <p class="font-medium">fe.rashed04@gmail.com</p>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -251,7 +271,7 @@
                                 <i class="fas fa-globe"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500">Languages</p>
+                                <p class="text-sm text-gray-500" data-i18n="languages">Langues</p>
                                 <p class="font-medium">Arabe, Français, Anglais</p>
                             </div>
                         </div>
@@ -264,15 +284,14 @@
     <!-- Skills Section -->
     <section id="skills" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold section-title">Technical Skills</h2>
+            <h2 class="text-3xl font-bold section-title" data-i18n="skills_title">Compétences Techniques</h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <div>
-                    <h3 class="text-xl font-semibold mb-6 text-primary">Networking & Systems</h3>
+                    <h3 class="text-xl font-semibold mb-6 text-primary" data-i18n="networking_skills">Réseaux & Systèmes</h3>
                     <div class="space-y-6">
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Network Management</span>
-                                <span class="text-primary font-bold">90%</span>
+                                <span class="font-medium" data-i18n="network_management">Gestion de Réseaux</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 90%"></div>
@@ -280,8 +299,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Equipment Configuration</span>
-                                <span class="text-primary font-bold">85%</span>
+                                <span class="font-medium" data-i18n="equipment_config">Configuration d'Équipements</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 85%"></div>
@@ -289,8 +307,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Network Monitoring</span>
-                                <span class="text-primary font-bold">88%</span>
+                                <span class="font-medium" data-i18n="network_monitoring">Surveillance de Réseaux</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 88%"></div>
@@ -298,8 +315,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">IP Address Management</span>
-                                <span class="text-primary font-bold">92%</span>
+                                <span class="font-medium" data-i18n="ip_management">Gestion d'Adresses IP</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 92%"></div>
@@ -308,12 +324,11 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold mb-6 text-primary">Security & Virtualization</h3>
+                    <h3 class="text-xl font-semibold mb-6 text-primary" data-i18n="security_skills">Sécurité & Virtualisation</h3>
                     <div class="space-y-6">
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">VPN Configuration</span>
-                                <span class="text-primary font-bold">80%</span>
+                                <span class="font-medium" data-i18n="vpn_config">Configuration VPN</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 80%"></div>
@@ -321,8 +336,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Server Administration</span>
-                                <span class="text-primary font-bold">85%</span>
+                                <span class="font-medium" data-i18n="server_admin">Administration Serveur</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 85%"></div>
@@ -330,8 +344,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Virtualization</span>
-                                <span class="text-primary font-bold">87%</span>
+                                <span class="font-medium" data-i18n="virtualization">Virtualisation</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 87%"></div>
@@ -339,8 +352,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Firewall Management</span>
-                                <span class="text-primary font-bold">83%</span>
+                                <span class="font-medium" data-i18n="firewall_management">Gestion de Pare-feu</span>
                             </div>
                             <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
                                 <div class="h-full bg-gradient-to-r from-primary to-secondary skill-bar rounded-full" style="width: 83%"></div>
@@ -351,7 +363,7 @@
             </div>
 
             <div class="mt-16">
-                <h3 class="text-xl font-semibold mb-6 text-primary">Software & Tools</h3>
+                <h3 class="text-xl font-semibold mb-6 text-primary" data-i18n="software_tools">Logiciels & Outils</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     <div class="bg-white p-4 rounded-lg shadow-sm card-hover flex flex-col items-center">
                         <i class="fab fa-linux text-4xl text-primary mb-2"></i>
@@ -401,7 +413,7 @@
     <!-- Experience Section -->
     <section id="experience" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold section-title">Work Experience</h2>
+            <h2 class="text-3xl font-bold section-title" data-i18n="experience_title">Expérience Professionnelle</h2>
             <div class="grid md:grid-cols-2 gap-8 mt-12">
                 <div class="card-hover bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-md border border-gray-100">
                     <div class="flex items-start mb-4">
@@ -409,26 +421,26 @@
                             <i class="fas fa-laptop-code text-2xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-primary">IT Department Intern</h3>
+                            <h3 class="text-xl font-semibold text-primary" data-i18n="intern_title">Stagiaire Département IT</h3>
                             <p class="text-secondary font-medium">ISTAG Bab Tizimi • 2023 - 2025</p>
                         </div>
                     </div>
                     <ul class="space-y-3 mt-4">
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Managed and supervised network infrastructure and systems for 2 years</span>
+                            <span data-i18n="intern_desc1">Gestion et supervision de l'infrastructure réseau et des systèmes pendant 2 ans</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Implemented open source solutions to reduce IT management costs</span>
+                            <span data-i18n="intern_desc2">Mise en œuvre de solutions open source pour réduire les coûts de gestion IT</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Optimized network service availability with centralized monitoring (Zabbix)</span>
+                            <span data-i18n="intern_desc3">Optimisation de la disponibilité des services réseau avec une surveillance centralisée (Zabbix)</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Established effective IP addressing policy to prevent address conflicts</span>
+                            <span data-i18n="intern_desc4">Établissement d'une politique d'adressage IP efficace pour prévenir les conflits d'adresses</span>
                         </li>
                     </ul>
                 </div>
@@ -439,26 +451,26 @@
                             <i class="fas fa-university text-2xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-primary">Academic Intern</h3>
-                            <p class="text-secondary font-medium">Faculty of Sciences, Meknès • 2024 - 2025</p>
+                            <h3 class="text-xl font-semibold text-primary" data-i18n="academic_intern">Stagiaire Académique</h3>
+                            <p class="text-secondary font-medium">Faculté des Sciences, Meknès • 2024 - 2025</p>
                         </div>
                     </div>
                     <ul class="space-y-3 mt-4">
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Set up a virtualized environment with Proxmox VE</span>
+                            <span data-i18n="academic_desc1">Mise en place d'un environnement virtualisé avec Proxmox VE</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Installed and configured GLPI for IT resource management</span>
+                            <span data-i18n="academic_desc2">Installation et configuration de GLPI pour la gestion des ressources IT</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Deployed a backup server with TrueNAS for data security</span>
+                            <span data-i18n="academic_desc3">Déploiement d'un serveur de sauvegarde avec TrueNAS pour la sécurité des données</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-accent mt-1 mr-2"></i>
-                            <span>Supervised infrastructure with Zabbix for better visibility</span>
+                            <span data-i18n="academic_desc4">Supervision de l'infrastructure avec Zabbix pour une meilleure visibilité</span>
                         </li>
                     </ul>
                 </div>
@@ -469,44 +481,44 @@
     <!-- Education Section -->
     <section id="education" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold section-title">Education & Certifications</h2>
+            <h2 class="text-3xl font-bold section-title" data-i18n="education_title">Formation & Certifications</h2>
             
             <div class="grid md:grid-cols-2 gap-8 mt-12">
                 <div>
-                    <h3 class="text-xl font-semibold mb-6 text-primary">Education</h3>
+                    <h3 class="text-xl font-semibold mb-6 text-primary" data-i18n="education_subtitle">Formation</h3>
                     <div class="space-y-8">
                         <div class="timeline-item">
-                            <h4 class="text-lg font-semibold">Diploma in Systems and Networks</h4>
+                            <h4 class="text-lg font-semibold" data-i18n="diploma_title">Diplôme en Systèmes et Réseaux</h4>
                             <p class="text-secondary font-medium">ISTAG de Bab Tizimi, Meknès • 2023 - 2025</p>
                         </div>
                         <div class="timeline-item">
-                            <h4 class="text-lg font-semibold">Cybersecurity Intrusion Tester Training</h4>
+                            <h4 class="text-lg font-semibold" data-i18n="cyber_title">Formation Testeur d'Intrusion Cybersécurité</h4>
                             <p class="text-secondary font-medium">2024 - 2025</p>
                         </div>
                         <div class="timeline-item">
-                            <h4 class="text-lg font-semibold">Mathematics and Applications</h4>
-                            <p class="text-secondary font-medium">Faculty of Sciences, Meknès • 2022 - 2023</p>
+                            <h4 class="text-lg font-semibold" data-i18n="math_title">Mathématiques et Applications</h4>
+                            <p class="text-secondary font-medium">Faculté des Sciences, Meknès • 2022 - 2023</p>
                         </div>
                         <div class="timeline-item">
-                            <h4 class="text-lg font-semibold">Baccalaureate in Physical and Chemical Science</h4>
+                            <h4 class="text-lg font-semibold" data-i18n="bac_title">Baccalauréat en Sciences Physiques et Chimiques</h4>
                             <p class="text-secondary font-medium">Lycée Qualifiant Ait Assm • 2021 - 2022</p>
                         </div>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-semibold mb-6 text-primary">Certifications</h3>
+                    <h3 class="text-xl font-semibold mb-6 text-primary" data-i18n="certifications_title">Certifications</h3>
                     <div class="bg-white p-6 rounded-xl shadow-md card-hover">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
                                 <i class="fas fa-certificate text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-semibold">Introduction to Cybersecurity - Ethical Hacker</h4>
+                                <h4 class="text-lg font-semibold" data-i18n="cisco_cert">Introduction à la Cybersécurité - Ethical Hacker</h4>
                                 <p class="text-secondary font-medium">Cisco • 2025</p>
                             </div>
                         </div>
-                        <p class="text-gray-600">Certified in cybersecurity fundamentals and ethical hacking techniques by Cisco Networking Academy.</p>
+                        <p class="text-gray-600" data-i18n="cisco_desc">Certifié en fondamentaux de la cybersécurité et techniques de piratage éthique par Cisco Networking Academy.</p>
                     </div>
                     
                     <div class="mt-8 bg-white p-6 rounded-xl shadow-md card-hover">
@@ -515,11 +527,11 @@
                                 <i class="fas fa-network-wired text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-semibold">Network Administration</h4>
+                                <h4 class="text-lg font-semibold" data-i18n="network_cert">Administration Réseau</h4>
                                 <p class="text-secondary font-medium">ISTAG • 2024</p>
                             </div>
                         </div>
-                        <p class="text-gray-600">Advanced training in network administration, including routing, switching, and security protocols.</p>
+                        <p class="text-gray-600" data-i18n="network_desc">Formation avancée en administration réseau, incluant le routage, la commutation et les protocoles de sécurité.</p>
                     </div>
                 </div>
             </div>
@@ -529,18 +541,18 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold section-title">Get In Touch</h2>
+            <h2 class="text-3xl font-bold section-title" data-i18n="contact_title">Contact</h2>
             <div class="grid md:grid-cols-2 gap-12 mt-8">
                 <div>
-                    <p class="mb-6 text-lg">I'm interested in opportunities where I can contribute my skills in network administration and systems management. Feel free to reach out if you'd like to discuss potential collaborations.</p>
+                    <p class="mb-6 text-lg" data-i18n="contact_desc">Je suis intéressé par les opportunités où je peux contribuer avec mes compétences en administration réseau et gestion des systèmes. N'hésitez pas à me contacter si vous souhaitez discuter de collaborations potentielles.</p>
                     <div class="space-y-6">
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mr-4">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <p class="font-medium">Location</p>
-                                <p class="text-gray-600">Méknes, Riad Zitoune, Morocco</p>
+                                <p class="font-medium" data-i18n="location">Localisation</p>
+                                <p class="text-gray-600">Méknes, Riad Zitoune, Maroc</p>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -548,7 +560,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div>
-                                <p class="font-medium">Phone</p>
+                                <p class="font-medium" data-i18n="phone">Téléphone</p>
                                 <p class="text-gray-600">+212611915325</p>
                             </div>
                         </div>
@@ -558,37 +570,37 @@
                             </div>
                             <div>
                                 <p class="font-medium">Email</p>
-                                <p class="text-gray-600">ferashed04@gmail.com</p>
+                                <p class="text-gray-600">fe.rashed04@gmail.com</p>
                             </div>
                         </div>
                     </div>
                     <div class="mt-8 flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
+                        <a href="https://www.linkedin.com/in/rachid-ferhaoui-40889627b/" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
+                        <a href="https://github.com/RASHEDF04" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://wa.me/212611915325" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-secondary transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
                 <div>
-                    <form class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <form id="contact-form" class="bg-gray-50 p-6 rounded-xl shadow-sm">
                         <div class="mb-4">
-                            <label for="name" class="block mb-2 font-medium">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <label for="name" class="block mb-2 font-medium" data-i18n="form_name">Nom</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block mb-2 font-medium">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                         </div>
                         <div class="mb-4">
-                            <label for="message" class="block mb-2 font-medium">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            <label for="message" class="block mb-2 font-medium" data-i18n="form_message">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
                         </div>
-                        <button type="submit" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full">Send Message</button>
+                        <button type="submit" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full" data-i18n="form_send">Envoyer le Message</button>
                     </form>
                 </div>
             </div>
@@ -600,28 +612,177 @@
         <div class="container mx-auto px-6">
             <div class="text-center">
                 <h3 class="text-2xl font-bold mb-4">Rachid Ferhaoui</h3>
-                <p class="mb-8 opacity-80">Network & Systems Specialist</p>
+                <p class="mb-8 opacity-80" data-i18n="job_title">Spécialiste Réseaux & Systèmes</p>
                 <div class="flex justify-center space-x-6 mb-8">
-                    <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
+                    <a href="https://www.linkedin.com/in/rachid-ferhaoui-40889627b/" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
+                    <a href="https://github.com/RASHEDF04" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
-                        <i class="fab fa-twitter"></i>
+                    <a href="https://wa.me/212611915325" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-secondary transition duration-300">
+                        <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
-                <p class="opacity-70">© 2023 Rachid Ferhaoui. All rights reserved.</p>
+                <p class="opacity-70">© 2023 Rachid Ferhaoui. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Language support
+        const translations = {
+            'en': {
+                'home': 'Home',
+                'about': 'About',
+                'skills': 'Skills',
+                'experience': 'Experience',
+                'education': 'Education',
+                'contact': 'Contact',
+                'job_title': 'Network & Systems Specialist',
+                'hero_desc': 'Specialized in network infrastructure management with expertise in system administration, virtualization, and cybersecurity.',
+                'about_me': 'About Me',
+                'about_desc1': 'Specialized Technician in Systems and Networks, recently graduated and passionate about IT and network infrastructure management.',
+                'about_desc2': 'Rigorous, autonomous and with good analytical skills, I have acquired solid skills in system administration, virtualization, network security and monitoring.',
+                'about_desc3': 'I am ready to fully invest myself in a professional environment to actively contribute to technical projects, ensure system availability, and participate in the evolution of IT infrastructures.',
+                'location': 'Location',
+                'phone': 'Phone',
+                'languages': 'Languages',
+                'skills_title': 'Technical Skills',
+                'networking_skills': 'Networking & Systems',
+                'network_management': 'Network Management',
+                'equipment_config': 'Equipment Configuration',
+                'network_monitoring': 'Network Monitoring',
+                'ip_management': 'IP Address Management',
+                'security_skills': 'Security & Virtualization',
+                'vpn_config': 'VPN Configuration',
+                'server_admin': 'Server Administration',
+                'virtualization': 'Virtualization',
+                'firewall_management': 'Firewall Management',
+                'software_tools': 'Software & Tools',
+                'experience_title': 'Work Experience',
+                'intern_title': 'IT Department Intern',
+                'intern_desc1': 'Managed and supervised network infrastructure and systems for 2 years',
+                'intern_desc2': 'Implemented open source solutions to reduce IT management costs',
+                'intern_desc3': 'Optimized network service availability with centralized monitoring (Zabbix)',
+                'intern_desc4': 'Established effective IP addressing policy to prevent address conflicts',
+                'academic_intern': 'Academic Intern',
+                'academic_desc1': 'Set up a virtualized environment with Proxmox VE',
+                'academic_desc2': 'Installed and configured GLPI for IT resource management',
+                'academic_desc3': 'Deployed a backup server with TrueNAS for data security',
+                'academic_desc4': 'Supervised infrastructure with Zabbix for better visibility',
+                'education_title': 'Education & Certifications',
+                'education_subtitle': 'Education',
+                'diploma_title': 'Diploma in Systems and Networks',
+                'cyber_title': 'Cybersecurity Intrusion Tester Training',
+                'math_title': 'Mathematics and Applications',
+                'bac_title': 'Baccalaureate in Physical and Chemical Science',
+                'certifications_title': 'Certifications',
+                'cisco_cert': 'Introduction to Cybersecurity - Ethical Hacker',
+                'cisco_desc': 'Certified in cybersecurity fundamentals and ethical hacking techniques by Cisco Networking Academy.',
+                'network_cert': 'Network Administration',
+                'network_desc': 'Advanced training in network administration, including routing, switching, and security protocols.',
+                'contact_title': 'Get In Touch',
+                'contact_desc': 'I\'m interested in opportunities where I can contribute my skills in network administration and systems management. Feel free to reach out if you\'d like to discuss potential collaborations.',
+                'form_name': 'Name',
+                'form_message': 'Message',
+                'form_send': 'Send Message',
+                'contact_me': 'Contact Me'
+            },
+            'fr': {
+                'home': 'Accueil',
+                'about': 'À Propos',
+                'skills': 'Compétences',
+                'experience': 'Expérience',
+                'education': 'Formation',
+                'contact': 'Contact',
+                'job_title': 'Spécialiste Réseaux & Systèmes',
+                'hero_desc': 'Spécialisé dans la gestion d\'infrastructures réseau avec une expertise en administration système, virtualisation et cybersécurité.',
+                'about_me': 'À Propos de Moi',
+                'about_desc1': 'Technicien Spécialisé En Systèmes Et Réseaux, récemment diplômé et passionné par l\'informatique et la gestion d\'infrastructures réseau.',
+                'about_desc2': 'Rigoureux, autonome et doté d\'un bon sens de l\'analyse, j\'ai acquis des compétences solides en administration système, virtualisation, sécurité réseau et supervision.',
+                'about_desc3': 'Je suis prêt à m\'investir pleinement dans un environnement professionnel pour contribuer activement à des projets techniques, assurer la disponibilité des systèmes, et participer à l\'évolution des infrastructures IT.',
+                'location': 'Localisation',
+                'phone': 'Téléphone',
+                'languages': 'Langues',
+                'skills_title': 'Compétences Techniques',
+                'networking_skills': 'Réseaux & Systèmes',
+                'network_management': 'Gestion de Réseaux',
+                'equipment_config': 'Configuration d\'Équipements',
+                'network_monitoring': 'Surveillance de Réseaux',
+                'ip_management': 'Gestion d\'Adresses IP',
+                'security_skills': 'Sécurité & Virtualisation',
+                'vpn_config': 'Configuration VPN',
+                'server_admin': 'Administration Serveur',
+                'virtualization': 'Virtualisation',
+                'firewall_management': 'Gestion de Pare-feu',
+                'software_tools': 'Logiciels & Outils',
+                'experience_title': 'Expérience Professionnelle',
+                'intern_title': 'Stagiaire Département IT',
+                'intern_desc1': 'Gestion et supervision de l\'infrastructure réseau et des systèmes pendant 2 ans',
+                'intern_desc2': 'Mise en œuvre de solutions open source pour réduire les coûts de gestion IT',
+                'intern_desc3': 'Optimisation de la disponibilité des services réseau avec une surveillance centralisée (Zabbix)',
+                'intern_desc4': 'Établissement d\'une politique d\'adressage IP efficace pour prévenir les conflits d\'adresses',
+                'academic_intern': 'Stagiaire Académique',
+                'academic_desc1': 'Mise en place d\'un environnement virtualisé avec Proxmox VE',
+                'academic_desc2': 'Installation et configuration de GLPI pour la gestion des ressources IT',
+                'academic_desc3': 'Déploiement d\'un serveur de sauvegarde avec TrueNAS pour la sécurité des données',
+                'academic_desc4': 'Supervision de l\'infrastructure avec Zabbix pour une meilleure visibilité',
+                'education_title': 'Formation & Certifications',
+                'education_subtitle': 'Formation',
+                'diploma_title': 'Diplôme en Systèmes et Réseaux',
+                'cyber_title': 'Formation Testeur d\'Intrusion Cybersécurité',
+                'math_title': 'Mathématiques et Applications',
+                'bac_title': 'Baccalauréat en Sciences Physiques et Chimiques',
+                'certifications_title': 'Certifications',
+                'cisco_cert': 'Introduction à la Cybersécurité - Ethical Hacker',
+                'cisco_desc': 'Certifié en fondamentaux de la cybersécurité et techniques de piratage éthique par Cisco Networking Academy.',
+                'network_cert': 'Administration Réseau',
+                'network_desc': 'Formation avancée en administration réseau, incluant le routage, la commutation et les protocoles de sécurité.',
+                'contact_title': 'Contact',
+                'contact_desc': 'Je suis intéressé par les opportunités où je peux contribuer avec mes compétences en administration réseau et gestion des systèmes. N\'hésitez pas à me contacter si vous souhaitez discuter de collaborations potentielles.',
+                'form_name': 'Nom',
+                'form_message': 'Message',
+                'form_send': 'Envoyer le Message',
+                'contact_me': 'Me Contacter'
+            }
+        };
+
+        let currentLang = 'fr';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update language buttons
+            document.getElementById('lang-fr').className = lang === 'fr' ? 
+                'px-3 py-1 bg-primary text-white rounded-md' : 'px-3 py-1 bg-gray-200 text-gray-700 rounded-md ml-2';
+            document.getElementById('lang-en').className = lang === 'en' ? 
+                'px-3 py-1 bg-primary text-white rounded-md ml-2' : 'px-3 py-1 bg-gray-200 text-gray-700 rounded-md ml-2';
+            document.getElementById('lang-fr-mobile').className = lang === 'fr' ? 
+                'px-3 py-1 bg-primary text-white rounded-md text-sm' : 'px-3 py-1 bg-gray-200 text-gray-700 rounded-md text-sm';
+            document.getElementById('lang-en-mobile').className = lang === 'en' ? 
+                'px-3 py-1 bg-primary text-white rounded-md text-sm ml-2' : 'px-3 py-1 bg-gray-200 text-gray-700 rounded-md text-sm ml-2';
+                
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
         // Mobile menu toggle
         document.getElementById('menu-btn').addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
+
+        // Language switchers
+        document.getElementById('lang-fr').addEventListener('click', () => setLanguage('fr'));
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-fr-mobile').addEventListener('click', () => setLanguage('fr'));
+        document.getElementById('lang-en-mobile').addEventListener('click', () => setLanguage('en'));
 
         // Animate skill bars when they come into view
         document.addEventListener('DOMContentLoaded', function() {
@@ -643,6 +804,14 @@
             skillBars.forEach(bar => {
                 observer.observe(bar);
             });
+
+            // Remove percentages from skill labels
+            document.querySelectorAll('.flex.justify-between.mb-2').forEach(el => {
+                const percentSpan = el.querySelector('span.text-primary');
+                if (percentSpan) {
+                    percentSpan.remove();
+                }
+            });
         });
 
         // Close mobile menu when clicking on a link
@@ -651,7 +820,28 @@
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            const subject = `Message from ${name} - Portfolio Contact`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            window.location.href = `mailto:fe.rashed04@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message (you could implement a toast notification here)
+            alert(currentLang === 'fr' 
+                ? 'Merci pour votre message! Vous allez être redirigé vers votre client email.' 
+                : 'Thank you for your message! You will be redirected to your email client.');
+        });
     </script>
 </body>
 </html>
-
